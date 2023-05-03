@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord List</title>
+    <link rel="stylesheet" href="res/default.css">
+    <script src="res/chordfinder.js" defer></script>
+</head>
+<body>
+    <h1>Ukulele chords (3 string, C G A tuning)</h1>
+    <article id="filters">
+        <div class="filter">
+            <input type="checkbox" style="opacity: 0;"><span class="filtername">Roots</span>&nbsp;<button id="roots-all">Select all</button>&nbsp;<button id="roots-none">Remove all</button>
+            <div id="roots-container">
+                <div class="filterline">
+	<input type="checkbox" id="filter-root-c" name="filter-root-c"><label for="filter-root-c">
+	<span class="mainname">C</span>
+	<span class="secondaryname"></span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-db" name="filter-root-db"><label for="filter-root-db">
+	<span class="mainname">C#</span>
+	<span class="secondaryname">(Db)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-d" name="filter-root-d"><label for="filter-root-d">
+	<span class="mainname">D</span>
+	<span class="secondaryname"></span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-eb" name="filter-root-eb"><label for="filter-root-eb">
+	<span class="mainname">Eb</span>
+	<span class="secondaryname">(Fb)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-e" name="filter-root-e"><label for="filter-root-e">
+	<span class="mainname">E</span>
+	<span class="secondaryname"></span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-f" name="filter-root-f"><label for="filter-root-f">
+	<span class="mainname">F</span>
+	<span class="secondaryname"></span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-gb" name="filter-root-gb"><label for="filter-root-gb">
+	<span class="mainname">F#</span>
+	<span class="secondaryname">(Gb)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-g" name="filter-root-g"><label for="filter-root-g">
+	<span class="mainname">G</span>
+	<span class="secondaryname"></span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-ab" name="filter-root-ab"><label for="filter-root-ab">
+	<span class="mainname">Ab</span>
+	<span class="secondaryname">(G#)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-a" name="filter-root-a"><label for="filter-root-a">
+	<span class="mainname">A</span>
+	<span class="secondaryname"></span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-bb" name="filter-root-bb"><label for="filter-root-bb">
+	<span class="mainname">Bb</span>
+	<span class="secondaryname">(A#)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-root-b" name="filter-root-b"><label for="filter-root-b">
+	<span class="mainname">B</span>
+	<span class="secondaryname"></span>
+	</label></div>
+            </div>
+        </div>
+        <div class="filter">
+            <input type="checkbox" style="opacity: 0;"><span class="filtername mainname">Chords</span>&nbsp;<button id="chords-all">Select all</button>&nbsp;<button id="chords-none">Remove all</button>
+            <div id="chords-container">
+                <div class="filterline">
+	<input type="checkbox" id="filter-chord-major" name="filter-chord-major"><label for="filter-chord-major">
+	<span class="mainname"></span>
+	<span class="secondaryname">(Major)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-power" name="filter-chord-power"><label for="filter-chord-power">
+	<span class="mainname">5</span>
+	<span class="secondaryname">(Power)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-major6" name="filter-chord-major6"><label for="filter-chord-major6">
+	<span class="mainname">6</span>
+	<span class="secondaryname">(Major 6th)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-dom7" name="filter-chord-dom7"><label for="filter-chord-dom7">
+	<span class="mainname">7</span>
+	<span class="secondaryname">(Dominant 7th)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-major7" name="filter-chord-major7"><label for="filter-chord-major7">
+	<span class="mainname">M7</span>
+	<span class="secondaryname">(Major 7th)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-minor" name="filter-chord-minor"><label for="filter-chord-minor">
+	<span class="mainname">m</span>
+	<span class="secondaryname">(minor)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-minor6" name="filter-chord-minor6"><label for="filter-chord-minor6">
+	<span class="mainname">m6</span>
+	<span class="secondaryname">(minor 6th, diminished 7th)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-minor7" name="filter-chord-minor7"><label for="filter-chord-minor7">
+	<span class="mainname">m7</span>
+	<span class="secondaryname">(minor 7th)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-minormajor7" name="filter-chord-minormajor7"><label for="filter-chord-minormajor7">
+	<span class="mainname">mM7</span>
+	<span class="secondaryname">(minor Major 7th)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-sus2" name="filter-chord-sus2"><label for="filter-chord-sus2">
+	<span class="mainname">sus2</span>
+	<span class="secondaryname">(suspended 2nd)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-sus4" name="filter-chord-sus4"><label for="filter-chord-sus4">
+	<span class="mainname">sus4</span>
+	<span class="secondaryname">(suspended 4th)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-aug" name="filter-chord-aug"><label for="filter-chord-aug">
+	<span class="mainname">+</span>
+	<span class="secondaryname">(augmented)</span>
+	</label></div>
+<div class="filterline">
+	<input type="checkbox" id="filter-chord-dim" name="filter-chord-dim"><label for="filter-chord-dim">
+	<span class="mainname">°</span>
+	<span class="secondaryname">(diminished)</span>
+	</label></div>
+            </div>
+        </div>
+    </article>
+    <article id="chords">
+        <section id="c">
+<span class="major">
+<img src="chords/C_2.svg">
+<img src="chords/C_1.svg">
+<img src="chords/C_0.svg">
+</span>
+<span class="power">
+<img src="chords/C5_4.svg">
+<img src="chords/C5_3.svg">
+</span>
+<span class="major6">
+<img src="chords/C6_6.svg">
+<img src="chords/C6_5.svg">
+</span>
+<span class="dom7">
+<img src="chords/C7_7.svg">
+</span>
+<span class="major7">
+<img src="chords/CM7_9.svg">
+<img src="chords/CM7_8.svg">
+</span>
+<span class="minor">
+<img src="chords/Cm_12.svg">
+<img src="chords/Cm_11.svg">
+<img src="chords/Cm_10.svg">
+</span>
+<span class="minor6">
+<img src="chords/Cm6_13.svg">
+</span>
+<span class="minor7">
+<img src="chords/Cm7_14.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/CmM7_2.svg">
+<img src="chords/CmM7_1.svg">
+</span>
+<span class="sus2">
+<img src="chords/Csus2_17.svg">
+<img src="chords/Csus2_16.svg">
+<img src="chords/Csus2_15.svg">
+</span>
+<span class="sus4">
+<img src="chords/Csus4_19.svg">
+<img src="chords/Csus4_18.svg">
+</span>
+<span class="aug">
+<img src="chords/C+_70.svg">
+<img src="chords/C+_69.svg">
+<img src="chords/C+_68.svg">
+</span>
+<span class="dim">
+<img src="chords/C°_20.svg">
+</span>
+</section>
+<section id="db">
+<span class="major">
+<img src="chords/Db_17.svg">
+</span>
+<span class="power">
+<img src="chords/Db5_18.svg">
+</span>
+<span class="major6">
+<img src="chords/Db6_19.svg">
+</span>
+<span class="dom7">
+<img src="chords/Db7_20.svg">
+</span>
+<span class="major7">
+<img src="chords/DbM7_22.svg">
+<img src="chords/DbM7_21.svg">
+</span>
+<span class="minor">
+<img src="chords/Dbm_24.svg">
+<img src="chords/Dbm_23.svg">
+</span>
+<span class="minor6">
+<img src="chords/Dbm6_25.svg">
+</span>
+<span class="minor7">
+<img src="chords/Dbm7_26.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/DbmM7_3.svg">
+<img src="chords/DbmM7_0.svg">
+</span>
+<span class="sus2">
+<img src="chords/Dbsus2_28.svg">
+<img src="chords/Dbsus2_27.svg">
+</span>
+<span class="sus4">
+<img src="chords/Dbsus4_29.svg">
+</span>
+<span class="aug">
+<img src="chords/Db+_32.svg">
+<img src="chords/Db+_31.svg">
+<img src="chords/Db+_30.svg">
+</span>
+<span class="dim">
+<img src="chords/Db°_33.svg">
+<img src="chords/Db°_34.svg">
+</span>
+</section>
+<section id="d">
+<span class="major">
+<img src="chords/D_22.svg">
+<img src="chords/D_21.svg">
+</span>
+<span class="power">
+<img src="chords/D5_24.svg">
+<img src="chords/D5_23.svg">
+</span>
+<span class="major6">
+<img src="chords/D6_25.svg">
+</span>
+<span class="dom7">
+<img src="chords/D7_26.svg">
+</span>
+<span class="major7">
+<img src="chords/DM7_28.svg">
+<img src="chords/DM7_27.svg">
+</span>
+<span class="minor">
+<img src="chords/Dm_31.svg">
+<img src="chords/Dm_30.svg">
+<img src="chords/Dm_29.svg">
+</span>
+<span class="minor6">
+<img src="chords/Dm6_32.svg">
+</span>
+<span class="minor7">
+<img src="chords/Dm7_33.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/DmM7_5.svg">
+<img src="chords/DmM7_4.svg">
+</span>
+<span class="sus2">
+<img src="chords/Dsus2_36.svg">
+<img src="chords/Dsus2_35.svg">
+<img src="chords/Dsus2_34.svg">
+</span>
+<span class="sus4">
+<img src="chords/Dsus4_39.svg">
+<img src="chords/Dsus4_38.svg">
+<img src="chords/Dsus4_37.svg">
+</span>
+<span class="aug">
+<img src="chords/D+_42.svg">
+<img src="chords/D+_41.svg">
+</span>
+<span class="dim">
+<img src="chords/D°_40.svg">
+</span>
+</section>
+<section id="eb">
+<span class="major">
+<img src="chords/Eb_36.svg">
+<img src="chords/Eb_35.svg">
+</span>
+<span class="power">
+<img src="chords/Eb5_38.svg">
+<img src="chords/Eb5_37.svg">
+</span>
+<span class="major6">
+<img src="chords/Eb6_41.svg">
+<img src="chords/Eb6_40.svg">
+<img src="chords/Eb6_39.svg">
+</span>
+<span class="dom7">
+<img src="chords/Eb7_43.svg">
+<img src="chords/Eb7_42.svg">
+</span>
+<span class="major7">
+<img src="chords/EbM7_46.svg">
+<img src="chords/EbM7_45.svg">
+<img src="chords/EbM7_44.svg">
+</span>
+<span class="minor">
+<img src="chords/Ebm_48.svg">
+<img src="chords/Ebm_47.svg">
+</span>
+<span class="minor6">
+<img src="chords/Ebm6_49.svg">
+</span>
+<span class="minor7">
+<img src="chords/Ebm7_50.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/EbmM7_7.svg">
+<img src="chords/EbmM7_6.svg">
+</span>
+<span class="sus2">
+<img src="chords/Ebsus2_52.svg">
+<img src="chords/Ebsus2_51.svg">
+</span>
+<span class="sus4">
+<img src="chords/Ebsus4_54.svg">
+<img src="chords/Ebsus4_53.svg">
+</span>
+<span class="aug">
+<img src="chords/Eb+_57.svg">
+<img src="chords/Eb+_56.svg">
+<img src="chords/Eb+_55.svg">
+</span>
+<span class="dim">
+<img src="chords/Eb°_58.svg">
+</span>
+</section>
+<section id="e">
+<span class="major">
+<img src="chords/E_44.svg">
+<img src="chords/E_43.svg">
+</span>
+<span class="power">
+<img src="chords/E5_46.svg">
+<img src="chords/E5_45.svg">
+</span>
+<span class="major6">
+<img src="chords/E6_48.svg">
+<img src="chords/E6_47.svg">
+</span>
+<span class="dom7">
+<img src="chords/E7_49.svg">
+</span>
+<span class="major7">
+<img src="chords/EM7_51.svg">
+<img src="chords/EM7_50.svg">
+</span>
+<span class="minor">
+<img src="chords/Em_53.svg">
+<img src="chords/Em_52.svg">
+</span>
+<span class="minor6">
+<img src="chords/Em6_55.svg">
+<img src="chords/Em6_54.svg">
+</span>
+<span class="minor7">
+<img src="chords/Em7_57.svg">
+<img src="chords/Em7_56.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/EmM7_9.svg">
+<img src="chords/EmM7_8.svg">
+<img src="chords/EmM7_10.svg">
+</span>
+<span class="sus2">
+<img src="chords/Esus2_59.svg">
+<img src="chords/Esus2_58.svg">
+</span>
+<span class="sus4">
+<img src="chords/Esus4_62.svg">
+<img src="chords/Esus4_61.svg">
+<img src="chords/Esus4_60.svg">
+</span>
+<span class="aug">
+<img src="chords/E+_65.svg">
+<img src="chords/E+_64.svg">
+<img src="chords/E+_63.svg">
+</span>
+<span class="dim">
+<img src="chords/E°_66.svg">
+<img src="chords/E°_67.svg">
+</span>
+</section>
+<section id="f">
+<span class="major">
+<img src="chords/F_73.svg">
+<img src="chords/F_72.svg">
+<img src="chords/F_71.svg">
+</span>
+<span class="power">
+<img src="chords/F5_75.svg">
+<img src="chords/F5_74.svg">
+</span>
+<span class="major6">
+<img src="chords/F6_78.svg">
+<img src="chords/F6_77.svg">
+<img src="chords/F6_76.svg">
+</span>
+<span class="dom7">
+<img src="chords/F7_79.svg">
+</span>
+<span class="major7">
+<img src="chords/FM7_81.svg">
+<img src="chords/FM7_80.svg">
+</span>
+<span class="minor">
+<img src="chords/Fm_83.svg">
+<img src="chords/Fm_82.svg">
+</span>
+<span class="minor6">
+<img src="chords/Fm6_84.svg">
+</span>
+<span class="minor7">
+<img src="chords/Fm7_85.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/FmM7_12.svg">
+<img src="chords/FmM7_11.svg">
+</span>
+<span class="sus2">
+<img src="chords/Fsus2_88.svg">
+<img src="chords/Fsus2_87.svg">
+<img src="chords/Fsus2_86.svg">
+</span>
+<span class="sus4">
+<img src="chords/Fsus4_89.svg">
+</span>
+<span class="aug">
+<img src="chords/F+_92.svg">
+<img src="chords/F+_91.svg">
+<img src="chords/F+_90.svg">
+</span>
+<span class="dim">
+<img src="chords/F°_93.svg">
+</span>
+</section>
+<section id="gb">
+<span class="major">
+<img src="chords/Gb_59.svg">
+</span>
+<span class="power">
+<img src="chords/Gb5_61.svg">
+<img src="chords/Gb5_60.svg">
+</span>
+<span class="major6">
+<img src="chords/Gb6_63.svg">
+<img src="chords/Gb6_62.svg">
+</span>
+<span class="dom7">
+<img src="chords/Gb7_64.svg">
+</span>
+<span class="major7">
+<img src="chords/GbM7_66.svg">
+<img src="chords/GbM7_65.svg">
+</span>
+<span class="minor">
+<img src="chords/Gbm_68.svg">
+<img src="chords/Gbm_67.svg">
+</span>
+<span class="minor6">
+<img src="chords/Gbm6_69.svg">
+</span>
+<span class="minor7">
+<img src="chords/Gbm7_70.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/GbmM7_14.svg">
+<img src="chords/GbmM7_13.svg">
+</span>
+<span class="sus2">
+<img src="chords/Gbsus2_71.svg">
+</span>
+<span class="sus4">
+<img src="chords/Gbsus4_72.svg">
+</span>
+<span class="aug">
+<img src="chords/Gb+_74.svg">
+<img src="chords/Gb+_73.svg">
+</span>
+<span class="dim">
+<img src="chords/Gb°_75.svg">
+<img src="chords/Gb°_76.svg">
+</span>
+</section>
+<section id="g">
+<span class="major">
+<img src="chords/G_95.svg">
+<img src="chords/G_94.svg">
+</span>
+<span class="power">
+<img src="chords/G5_99.svg">
+<img src="chords/G5_98.svg">
+<img src="chords/G5_97.svg">
+<img src="chords/G5_96.svg">
+</span>
+<span class="major6">
+<img src="chords/G6_102.svg">
+<img src="chords/G6_101.svg">
+<img src="chords/G6_100.svg">
+</span>
+<span class="dom7">
+<img src="chords/G7_104.svg">
+<img src="chords/G7_103.svg">
+</span>
+<span class="major7">
+<img src="chords/GM7_106.svg">
+<img src="chords/GM7_105.svg">
+</span>
+<span class="minor">
+<img src="chords/Gm_108.svg">
+<img src="chords/Gm_107.svg">
+</span>
+<span class="minor6">
+<img src="chords/Gm6_110.svg">
+<img src="chords/Gm6_109.svg">
+</span>
+<span class="minor7">
+<img src="chords/Gm7_111.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/GmM7_16.svg">
+<img src="chords/GmM7_15.svg">
+</span>
+<span class="sus2">
+<img src="chords/Gsus2_114.svg">
+<img src="chords/Gsus2_113.svg">
+<img src="chords/Gsus2_112.svg">
+</span>
+<span class="sus4">
+<img src="chords/Gsus4_117.svg">
+<img src="chords/Gsus4_116.svg">
+<img src="chords/Gsus4_115.svg">
+</span>
+<span class="aug">
+<img src="chords/G+_121.svg">
+<img src="chords/G+_120.svg">
+<img src="chords/G+_119.svg">
+</span>
+<span class="dim">
+<img src="chords/G°_118.svg">
+</span>
+</section>
+<section id="ab">
+<span class="major">
+<img src="chords/Ab_78.svg">
+<img src="chords/Ab_77.svg">
+</span>
+<span class="power">
+<img src="chords/Ab5_80.svg">
+<img src="chords/Ab5_79.svg">
+</span>
+<span class="major6">
+<img src="chords/Ab6_82.svg">
+<img src="chords/Ab6_81.svg">
+</span>
+<span class="dom7">
+<img src="chords/Ab7_83.svg">
+</span>
+<span class="major7">
+<img src="chords/AbM7_84.svg">
+</span>
+<span class="minor">
+<img src="chords/Abm_86.svg">
+<img src="chords/Abm_85.svg">
+</span>
+<span class="minor6">
+<img src="chords/Abm6_87.svg">
+</span>
+<span class="minor7">
+<img src="chords/Abm7_88.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/AbmM7_17.svg">
+</span>
+<span class="sus2">
+<img src="chords/Absus2_91.svg">
+<img src="chords/Absus2_90.svg">
+</span>
+<span class="sus4">
+<img src="chords/Absus4_93.svg">
+<img src="chords/Absus4_92.svg">
+</span>
+<span class="aug">
+<img src="chords/Ab+_96.svg">
+<img src="chords/Ab+_95.svg">
+<img src="chords/Ab+_94.svg">
+</span>
+<span class="dim">
+<img src="chords/Ab°_89.svg">
+</span>
+</section>
+<section id="a">
+<span class="major">
+<img src="chords/A_124.svg">
+<img src="chords/A_123.svg">
+<img src="chords/A_122.svg">
+</span>
+<span class="power">
+<img src="chords/A5_127.svg">
+<img src="chords/A5_126.svg">
+<img src="chords/A5_125.svg">
+</span>
+<span class="major6">
+<img src="chords/A6_129.svg">
+<img src="chords/A6_128.svg">
+</span>
+<span class="dom7">
+<img src="chords/A7_131.svg">
+<img src="chords/A7_130.svg">
+</span>
+<span class="major7">
+<img src="chords/AM7_132.svg">
+</span>
+<span class="minor">
+<img src="chords/Am_135.svg">
+<img src="chords/Am_134.svg">
+<img src="chords/Am_133.svg">
+</span>
+<span class="minor6">
+<img src="chords/Am6_137.svg">
+<img src="chords/Am6_136.svg">
+</span>
+<span class="minor7">
+<img src="chords/Am7_140.svg">
+<img src="chords/Am7_139.svg">
+<img src="chords/Am7_138.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/AmM7_19.svg">
+<img src="chords/AmM7_18.svg">
+</span>
+<span class="sus2">
+<img src="chords/Asus2_143.svg">
+<img src="chords/Asus2_142.svg">
+<img src="chords/Asus2_141.svg">
+</span>
+<span class="sus4">
+<img src="chords/Asus4_145.svg">
+<img src="chords/Asus4_144.svg">
+</span>
+<span class="aug">
+<img src="chords/A+_148.svg">
+<img src="chords/A+_147.svg">
+<img src="chords/A+_146.svg">
+</span>
+<span class="dim">
+<img src="chords/A°_149.svg">
+<img src="chords/A°_150.svg">
+</span>
+</section>
+<section id="bb">
+<span class="major">
+<img src="chords/Bb_2.svg">
+<img src="chords/Bb_1.svg">
+</span>
+<span class="power">
+<img src="chords/Bb5_0.svg">
+</span>
+<span class="major6">
+<img src="chords/Bb6_4.svg">
+<img src="chords/Bb6_3.svg">
+</span>
+<span class="dom7">
+<img src="chords/Bb7_5.svg">
+</span>
+<span class="major7">
+<img src="chords/BbM7_7.svg">
+<img src="chords/BbM7_6.svg">
+</span>
+<span class="minor">
+<img src="chords/Bbm_8.svg">
+</span>
+<span class="minor6">
+<img src="chords/Bbm6_9.svg">
+</span>
+<span class="minor7">
+<img src="chords/Bbm7_10.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/BbmM7_21.svg">
+<img src="chords/BbmM7_20.svg">
+</span>
+<span class="sus2">
+<img src="chords/Bbsus2_11.svg">
+</span>
+<span class="sus4">
+<img src="chords/Bbsus4_13.svg">
+<img src="chords/Bbsus4_12.svg">
+</span>
+<span class="aug">
+<img src="chords/Bb+_16.svg">
+<img src="chords/Bb+_15.svg">
+</span>
+<span class="dim">
+<img src="chords/Bb°_14.svg">
+</span>
+</section>
+<section id="b">
+<span class="major">
+<img src="chords/B_152.svg">
+<img src="chords/B_151.svg">
+</span>
+<span class="power">
+<img src="chords/B5_153.svg">
+</span>
+<span class="major6">
+<img src="chords/B6_155.svg">
+<img src="chords/B6_154.svg">
+</span>
+<span class="dom7">
+<img src="chords/B7_157.svg">
+<img src="chords/B7_156.svg">
+</span>
+<span class="major7">
+<img src="chords/BM7_159.svg">
+<img src="chords/BM7_158.svg">
+</span>
+<span class="minor">
+<img src="chords/Bm_160.svg">
+</span>
+<span class="minor6">
+<img src="chords/Bm6_161.svg">
+</span>
+<span class="minor7">
+<img src="chords/Bm7_163.svg">
+<img src="chords/Bm7_162.svg">
+</span>
+<span class="minormajor7">
+<img src="chords/BmM7_23.svg">
+<img src="chords/BmM7_22.svg">
+</span>
+<span class="sus2">
+<img src="chords/Bsus2_164.svg">
+</span>
+<span class="sus4">
+<img src="chords/Bsus4_166.svg">
+<img src="chords/Bsus4_165.svg">
+</span>
+<span class="aug">
+<img src="chords/B+_169.svg">
+<img src="chords/B+_168.svg">
+<img src="chords/B+_167.svg">
+</span>
+<span class="dim">
+<img src="chords/B°_170.svg">
+</span>
+</section>
+
+    </article>
+    <script>
+        const FULL_LIST = ['c-major','c-power','c-major6','c-dom7','c-major7','c-minor','c-minor6','c-minor7','c-minormajor7','c-sus2','c-sus4','c-aug','c-dim','db-major','db-power','db-major6','db-dom7','db-major7','db-minor','db-minor6','db-minor7','db-minormajor7','db-sus2','db-sus4','db-aug','db-dim','d-major','d-power','d-major6','d-dom7','d-major7','d-minor','d-minor6','d-minor7','d-minormajor7','d-sus2','d-sus4','d-aug','d-dim','eb-major','eb-power','eb-major6','eb-dom7','eb-major7','eb-minor','eb-minor6','eb-minor7','eb-minormajor7','eb-sus2','eb-sus4','eb-aug','eb-dim','e-major','e-power','e-major6','e-dom7','e-major7','e-minor','e-minor6','e-minor7','e-minormajor7','e-sus2','e-sus4','e-aug','e-dim','f-major','f-power','f-major6','f-dom7','f-major7','f-minor','f-minor6','f-minor7','f-minormajor7','f-sus2','f-sus4','f-aug','f-dim','gb-major','gb-power','gb-major6','gb-dom7','gb-major7','gb-minor','gb-minor6','gb-minor7','gb-minormajor7','gb-sus2','gb-sus4','gb-aug','gb-dim','g-major','g-power','g-major6','g-dom7','g-major7','g-minor','g-minor6','g-minor7','g-minormajor7','g-sus2','g-sus4','g-aug','g-dim','ab-major','ab-power','ab-major6','ab-dom7','ab-major7','ab-minor','ab-minor6','ab-minor7','ab-minormajor7','ab-sus2','ab-sus4','ab-aug','ab-dim','a-major','a-power','a-major6','a-dom7','a-major7','a-minor','a-minor6','a-minor7','a-minormajor7','a-sus2','a-sus4','a-aug','a-dim','bb-major','bb-power','bb-major6','bb-dom7','bb-major7','bb-minor','bb-minor6','bb-minor7','bb-minormajor7','bb-sus2','bb-sus4','bb-aug','bb-dim','b-major','b-power','b-major6','b-dom7','b-major7','b-minor','b-minor6','b-minor7','b-minormajor7','b-sus2','b-sus4','b-aug','b-dim'];
+        const ROOT_FILTER = 'filter-root';
+        const CHORD_FILTER = 'filter-chord';
+        const ID_SEPARATOR = '-';
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+:root {
+
+}
+
+html {
+    /* svg's font-family is defined as 'serif' */
+    font-family: serif;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+text-align: center;
+}
+
+.mainname {
+    display: inline-block;
+    width: 3em;
+}
+
+.filtername {
+    font-size: 120%;
+}
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#filters>* {
+    width: 40%;
+    padding: 1rem;
+    min-width: 300px;
+}
+
+#chords {
+    text-align: center;
+}
+
+section {
+    display: inline;
+}
+
+section>span {
+    display: inline-block;
+}
+
+@media print {
+    #filters {
+        display: none;
+    }
+    section {
+        page-break-inside: avoid;
+    }
+    img {
+        height: 5.7cm;
+    }
+}
