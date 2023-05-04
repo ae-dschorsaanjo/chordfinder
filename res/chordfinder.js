@@ -25,7 +25,7 @@ function filter() {
         else root_no.push(id);
     };
     root_yes.forEach(id => {
-        document.getElementById(id).style.display = "block";
+        document.getElementById(id).style.display = "inline";
     });
     root_no.forEach(id => {
         document.getElementById(id).style.display = "none";
