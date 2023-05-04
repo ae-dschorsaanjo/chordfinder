@@ -28,13 +28,11 @@ function filter() {
         document.getElementById(id).style.display = "block";
     });
     root_no.forEach(id => {
-        console.log(id);
         document.getElementById(id).style.display = "none";
     });
     for (const chord of CHORD_FILTERS) {
         let cls = getIdFromSelector(chord.id);
         for (const e of document.querySelectorAll('.' + cls)) {
-            console.log(e);
             e.style.display = (chord.checked ? "inline" : "none");
         };
     };
